@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff7ed" />
+    <meta
+      name="description"
+      content="Sainaa, will you play table tennis with me this Friday at 7pm?"
+    />
+    <meta property="og:title" content="A tiny question for Sainaa 🏓" />
+    <meta
+      property="og:description"
+      content="Friday at 7pm. You, me, and a very competitive little ping-pong ball."
+    />
+    <meta property="og:type" content="website" />
+    <title>A tiny question for Sainaa 🏓</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/site.css" />
+  </head>
+  <body class="invite-page">
+    <div class="floating-shape shape-one" aria-hidden="true"></div>
+    <div class="floating-shape shape-two" aria-hidden="true"></div>
+
+    <main class="invite-card" id="invite-card">
+      <span class="eyebrow">hey, Sainaa 💌</span>
+
+      <div class="paddle-scene" aria-hidden="true">
+        <span class="paddle paddle-left">🏓</span>
+        <span class="ball"></span>
+        <span class="paddle paddle-right">🏓</span>
+      </div>
+
+      <h1>Will you play<br /><em>table tennis</em> with me?</h1>
+
+      <div class="date-pill">
+        <span class="calendar-icon" aria-hidden="true">♥</span>
+        <span><strong>Friday, 14 August</strong><small>7:00 PM · just us two</small></span>
+      </div>
+
+      <p class="note">I’ll bring the competitive spirit. You bring that smile.</p>
+
+      <div class="button-arena" id="button-arena" aria-label="Choose your answer">
+        <button class="answer yes-button" id="yes-button" type="button">Yes, it’s a date! 🏓</button>
+        <button class="answer no-button" id="no-button" type="button">No</button>
+      </div>
+
+      <p class="hint" id="hint" aria-live="polite">Choose carefully… the “No” is a little shy.</p>
+    </main>
+
+    <section class="success-card" id="success-card" hidden aria-live="polite">
+      <div class="success-emoji" aria-hidden="true">🥰</div>
+      <span class="eyebrow">best answer ever</span>
+      <h2>It’s a date!</h2>
+      <p>Friday at 7. I’ll sort the paddles and prepare to lose gracefully.</p>
+      <div class="success-actions">
+        <button class="primary-link" id="calendar-button" type="button">Add to calendar</button>
+        <button class="secondary-link" id="share-button" type="button">Tell me on WhatsApp 💬</button>
+      </div>
+      <small>If WhatsApp doesn’t open, just send me a 🏓</small>
+    </section>
+
+    <section class="success-card alternate-card" id="alternate-card" hidden aria-live="polite">
+      <div class="success-emoji" aria-hidden="true">💛</div>
+      <h2>Another time, then.</h2>
+      <p>You still owe me a rematch. Pick a better day and tell me on WhatsApp?</p>
+      <button class="secondary-link" id="alternate-share" type="button">Suggest another time</button>
+    </section>
+
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+    <script src="../../assets/invitation.js"></script>
+  </body>
+</html>
