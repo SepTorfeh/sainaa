@@ -6,7 +6,7 @@ A small, reusable home for cute invitations and questions.
 
 `invites/table-tennis/` asks Sainaa to play table tennis on Friday, 14 August 2026 at 7:00 PM (Australia/Sydney).
 
-The page is mobile-friendly, has a playful dodging “No” button, lets her genuinely choose “another time” after a few tries, celebrates a “Yes,” offers an `.ics` calendar download, and opens a pre-filled WhatsApp reply.
+The page is mobile-friendly, has a playful dodging “No” button, lets her genuinely choose “another time” after at least four minutes and eight dodges, celebrates a “Yes,” offers an `.ics` calendar download, and opens a pre-filled WhatsApp reply.
 
 ## Preview locally
 

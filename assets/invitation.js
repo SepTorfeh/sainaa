@@ -9,21 +9,55 @@ const calendarButton = document.querySelector("#calendar-button");
 const shareButton = document.querySelector("#share-button");
 const alternateShare = document.querySelector("#alternate-share");
 
-const dodges = [
+const dodgeMessages = [
   "Hmm… try that again 😇",
   "The button has other plans.",
   "Are you absolutely, positively sure?",
-  "Okay okay — you can say ‘another time’ 💛",
+  "Nope, too quick! 🏓",
+  "That button is surprisingly athletic.",
+  "It’s training for the rematch.",
+  "Maybe the other button? Just a thought…",
+  "Still running! 💨",
+  "You nearly had it that time.",
+  "The little button believes in us ❤️",
 ];
+
+const ALTERNATE_DELAY_MS = 4 * 60 * 1000;
+const MIN_DODGES_BEFORE_ALTERNATE = 8;
+const DODGE_STARTED_AT_KEY = "sainaa-table-tennis-no-started-at";
 
 let dodgeCount = 0;
 let noIsAvailable = false;
 let ignoreNextNoClick = false;
+let dodgeStartedAt = Number(sessionStorage.getItem(DODGE_STARTED_AT_KEY)) || null;
+
+function canOfferAnotherTime() {
+  if (!dodgeStartedAt || dodgeCount < MIN_DODGES_BEFORE_ALTERNATE) return false;
+  return Date.now() - dodgeStartedAt >= ALTERNATE_DELAY_MS;
+}
+
+function unlockAnotherTime() {
+  noIsAvailable = true;
+  noButton.textContent = "Another time?";
+  noButton.setAttribute("aria-label", "No, suggest another time");
+  hint.textContent = "Okay, you’ve earned a real escape route 💛";
+}
 
 function moveNoButton() {
   if (noIsAvailable) return;
 
+  if (!dodgeStartedAt) {
+    dodgeStartedAt = Date.now();
+    sessionStorage.setItem(DODGE_STARTED_AT_KEY, String(dodgeStartedAt));
+  }
+
   dodgeCount += 1;
+
+  if (canOfferAnotherTime()) {
+    unlockAnotherTime();
+    return;
+  }
+
   const maxX = Math.max(0, arena.clientWidth - noButton.offsetWidth - 8);
   const maxY = Math.max(0, arena.clientHeight - noButton.offsetHeight - 8);
   const x = Math.max(4, Math.random() * maxX);
@@ -31,14 +65,8 @@ function moveNoButton() {
 
   noButton.style.left = `${x}px`;
   noButton.style.top = `${y}px`;
-  yesButton.style.setProperty("--yes-scale", Math.min(1 + dodgeCount * 0.1, 1.36));
-  hint.textContent = dodges[Math.min(dodgeCount - 1, dodges.length - 1)];
-
-  if (dodgeCount >= dodges.length) {
-    noIsAvailable = true;
-    noButton.textContent = "Another time?";
-    noButton.setAttribute("aria-label", "No, suggest another time");
-  }
+  yesButton.style.setProperty("--yes-scale", Math.min(1 + dodgeCount * 0.025, 1.36));
+  hint.textContent = dodgeMessages[(dodgeCount - 1) % dodgeMessages.length];
 }
 
 function showCard(card) {
